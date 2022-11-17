@@ -1,0 +1,29 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "REST API Created using NodeJS and Express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibr5500/rest-api.git"
+  },
+  "author": "Ibrahim Ahmat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibr5500/rest-api/issues"
+  },
+  "homepage": "https://github.com/ibr5500/rest-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.12.0",
+    "mongoose": "^6.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
