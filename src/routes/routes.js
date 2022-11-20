@@ -1,9 +1,17 @@
 const routes = (elem) => {
   elem
     .route("/contact")
-    .get((req, res) => {
-      res.send("GET request SUCCESSFUL!");
-    })
+    .get(
+      (req, res, next) => {
+        // next middelware
+        console.log(`Request from ${req.originalUrl}`);
+        console.log(`Request type ${req.method}`);
+        next();
+      },
+      (req, res, next) => {
+        return res.send("GET request SUCCESSFUL!");
+      }
+    )
     .post((req, res) => {
       res.send("POST request SUCCESSFUL!");
     });
