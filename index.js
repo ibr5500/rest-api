@@ -4,26 +4,23 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 
 const app = express();
-
-const port = 3000;
+const PORT = 4000;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/rest-apidb", {
+mongoose.connect("mongodb://localhost:27017/CRMdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-// body-parser setup
+// bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 routes(app);
 
-app.get("/", (req, res) => {
-  res.send(`Node & express runing on port ${port}`);
-});
+app.get("/", (req, res) =>
+  res.send(`Node and express server running on port ${PORT}`)
+);
 
-app.listen(port, () => {
-  console.log(`Server runing on port: ${port}`);
-});
+app.listen(PORT, () => console.log(`Your server is running on port ${PORT}`));

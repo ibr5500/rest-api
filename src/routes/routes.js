@@ -1,29 +1,23 @@
-const routes = (elem) => {
-  elem
-    .route("/contact")
-    .get(
-      (req, res, next) => {
-        // next middelware
-        console.log(`Request from ${req.originalUrl}`);
-        console.log(`Request type ${req.method}`);
-        next();
-      },
-      (req, res, next) => {
-        return res.send("GET request SUCCESSFUL!");
-      }
-    )
-    .post((req, res) => {
-      res.send("POST request SUCCESSFUL!");
-    });
+import { addnewContact, getContacts } from "../controllers/controller";
 
-  elem
+const routes = (app) => {
+  app
+    .route("/contact")
+    .get((req, res, next) => {
+      // middleware
+      console.log(`Request from: ${req.originalUrl}`);
+      console.log(`Request type: ${req.method}`);
+      next();
+    }, getContacts)
+
+    .post(addnewContact);
+
+  app
     .route("/contact/:contactID")
-    .put((req, res) => {
-      res.send("PUT request SUCCESSFUL!");
-    })
-    .delete((req, res) => {
-      res.send("DELET request SUCCESSFUL!");
-    });
+    .get(getContactWithId)
+    .put((req, res) => res.send("PUT request successful!"))
+
+    .delete((req, res) => res.send("DELETE request successful!"));
 };
 
 export default routes;
